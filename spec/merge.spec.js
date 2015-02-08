@@ -52,7 +52,7 @@ describe('merge', function () {
     describe('bem', function () {
         it('must merge block with its elem', function () {
             var block = { block: 'block' },
-                elem = { block: 'block', elem: 'elem' };
+                elem = { scope: 'block', elem: 'elem' };
 
             merge([block], [elem])
                 .must.eql([block, elem]);
@@ -60,7 +60,7 @@ describe('merge', function () {
 
         it('must merge block with its mod', function () {
             var block = { block: 'block' },
-                mod = { block: 'block', modName: 'mod', modVal: 'val' };
+                mod = { scope: 'block', modName: 'mod', modVal: 'val' };
 
             merge([block], [mod])
                 .must.eql([block, mod]);
@@ -68,63 +68,63 @@ describe('merge', function () {
 
         it('must merge block with its bool mod', function () {
             var block = { block: 'block' },
-                mod = { block: 'block', modName: 'mod', modVal: true };
+                mod = { scope: 'block', modName: 'mod', modVal: true };
 
             merge([block], [mod])
                 .must.eql([block, mod]);
         });
 
         it('must merge elems of block', function () {
-            var elem1 = { block: 'block', elem: 'elem-1' },
-                elem2 = { block: 'block', elem: 'elem-2' };
+            var elem1 = { scope: 'block', elem: 'elem-1' },
+                elem2 = { scope: 'block', elem: 'elem-2' };
 
             merge([elem1], [elem2])
                 .must.eql([elem1, elem2]);
         });
 
         it('must merge mods of block', function () {
-            var mod1 = { block: 'block', modName: 'mod-1', modVal: true },
-                mod2 = { block: 'block', modName: 'mod-2', modVal: true };
+            var mod1 = { scope: 'block', modName: 'mod-1', modVal: true },
+                mod2 = { scope: 'block', modName: 'mod-2', modVal: true };
 
             merge([mod1], [mod2])
                 .must.eql([mod1, mod2]);
         });
 
         it('must merge mod vals of block mod', function () {
-            var val1 = { block: 'block', modName: 'mod', modVal: 'val-1' },
-                val2 = { block: 'block', modName: 'mod', modVal: 'val-2' };
+            var val1 = { scope: 'block', modName: 'mod', modVal: 'val-1' },
+                val2 = { scope: 'block', modName: 'mod', modVal: 'val-2' };
 
             merge([val1], [val2])
                 .must.eql([val1, val2]);
         });
 
         it('must merge elem with its mod', function () {
-            var elem = { block: 'block', elem: 'elem' },
-                mod = { block: 'block', elem: 'elem' , modName: 'mod', modVal: 'val' };
+            var elem = { scope: 'block', elem: 'elem' },
+                mod = { scope: 'block', elem: 'elem' , modName: 'mod', modVal: 'val' };
 
             merge([elem], [mod])
                 .must.eql([elem, mod]);
         });
 
         it('must merge elem with its bool mod', function () {
-            var elem = { block: 'block', elem: 'elem' },
-                mod = { block: 'block', elem: 'elem' , modName: 'mod', modVal: true };
+            var elem = { scope: 'block', elem: 'elem' },
+                mod = { scope: 'block', elem: 'elem' , modName: 'mod', modVal: true };
 
             merge([elem], [mod])
                 .must.eql([elem, mod]);
         });
 
         it('must merge mods of elem', function () {
-            var mod1 = { block: 'block', elem: 'elem', modName: 'mod-1', modVal: true },
-                mod2 = { block: 'block', elem: 'elem', modName: 'mod-2', modVal: true };
+            var mod1 = { scope: 'block', elem: 'elem', modName: 'mod-1', modVal: true },
+                mod2 = { scope: 'block', elem: 'elem', modName: 'mod-2', modVal: true };
 
             merge([mod1], [mod2])
                 .must.eql([mod1, mod2]);
         });
 
         it('must merge mod vals of elem mod', function () {
-            var val1 = { block: 'block', elem: 'elem', modName: 'mod', modVal: 'val-1' },
-                val2 = { block: 'block', elem: 'elem', modName: 'mod', modVal: 'val-2' };
+            var val1 = { scope: 'block', elem: 'elem', modName: 'mod', modVal: 'val-1' },
+                val2 = { scope: 'block', elem: 'elem', modName: 'mod', modVal: 'val-2' };
 
             merge([val1], [val2])
                 .must.eql([val1, val2]);

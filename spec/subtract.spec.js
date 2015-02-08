@@ -43,35 +43,35 @@ describe('subtract', function () {
         });
 
         it('must subtract bool mod from bool mod', function () {
-            var mod = [{ block: 'block', modName: 'mod', modVal: true }];
+            var mod = [{ scope: 'block', modName: 'mod', modVal: true }];
 
             subtract(mod, mod)
                 .must.be.empty();
         });
 
         it('must subtract mod from mod', function () {
-            var mod = [{ block: 'block', modName: 'mod', modVal: 'val' }];
+            var mod = [{ scope: 'block', modName: 'mod', modVal: 'val' }];
 
             subtract(mod, mod)
                 .must.be.empty();
         });
 
         it('must subtract elem from elem', function () {
-            var elem = [{ block: 'block', elem: 'elem' }];
+            var elem = [{ scope: 'block', elem: 'elem' }];
 
             subtract(elem, elem)
                 .must.be.empty();
         });
 
         it('must subtract bool mod of elem from bool mod of elem', function () {
-            var mod = [{ block: 'block', elem: 'elem' , modName: 'mod', modVal: true }];
+            var mod = [{ scope: 'block', elem: 'elem' , modName: 'mod', modVal: true }];
 
             subtract(mod, mod)
                 .must.be.empty();
         });
 
         it('must subtract elem mod from elem mod', function () {
-            var mod = [{ block: 'block', elem: 'elem' , modName: 'mod', modVal: 'val' }];
+            var mod = [{ scope: 'block', elem: 'elem' , modName: 'mod', modVal: 'val' }];
 
             subtract(mod, mod)
                 .must.be.empty();
@@ -82,11 +82,11 @@ describe('subtract', function () {
         it('must not subtract other entities from block', function () {
             var decl1 = [{ block: 'block' }],
                 decl2 = [
-                    { block: 'block', modName: 'mod', modVal: true },
-                    { block: 'block', modName: 'mod', modVal: 'val' },
-                    { block: 'block', elem: 'elem' },
-                    { block: 'block', elem: 'elem', modName: 'mod', modVal: true },
-                    { block: 'block', elem: 'elem', modName: 'mod', modVal: 'val' }
+                    { scope: 'block', modName: 'mod', modVal: true },
+                    { scope: 'block', modName: 'mod', modVal: 'val' },
+                    { scope: 'block', elem: 'elem' },
+                    { scope: 'block', elem: 'elem', modName: 'mod', modVal: true },
+                    { scope: 'block', elem: 'elem', modName: 'mod', modVal: 'val' }
                 ];
 
             subtract(decl1, decl2)
@@ -94,13 +94,13 @@ describe('subtract', function () {
         });
 
         it('must not subtract other entities from bool mod', function () {
-            var decl1 = [{ block: 'block', modName: 'mod', modVal: true }],
+            var decl1 = [{ scope: 'block', modName: 'mod', modVal: true }],
                 decl2 = [
                     { block: 'block' },
-                    { block: 'block', modName: 'mod', modVal: 'val' },
-                    { block: 'block', elem: 'elem' },
-                    { block: 'block', elem: 'elem', modName: 'mod', modVal: true },
-                    { block: 'block', elem: 'elem', modName: 'mod', modVal: 'val' }
+                    { scope: 'block', modName: 'mod', modVal: 'val' },
+                    { scope: 'block', elem: 'elem' },
+                    { scope: 'block', elem: 'elem', modName: 'mod', modVal: true },
+                    { scope: 'block', elem: 'elem', modName: 'mod', modVal: 'val' }
                 ];
 
             subtract(decl1, decl2)
@@ -108,13 +108,13 @@ describe('subtract', function () {
         });
 
         it('must not subtract other entities from mod', function () {
-            var decl1 = [{ block: 'block', modName: 'mod', modVal: 'val' }],
+            var decl1 = [{ scope: 'block', modName: 'mod', modVal: 'val' }],
                 decl2 = [
                     { block: 'block' },
-                    { block: 'block', modName: 'mod', modVal: true },
-                    { block: 'block', elem: 'elem' },
-                    { block: 'block', elem: 'elem', modName: 'mod', modVal: true },
-                    { block: 'block', elem: 'elem', modName: 'mod', modVal: 'val' }
+                    { scope: 'block', modName: 'mod', modVal: true },
+                    { scope: 'block', elem: 'elem' },
+                    { scope: 'block', elem: 'elem', modName: 'mod', modVal: true },
+                    { scope: 'block', elem: 'elem', modName: 'mod', modVal: 'val' }
                 ];
 
             subtract(decl1, decl2)
@@ -122,13 +122,13 @@ describe('subtract', function () {
         });
 
         it('must not subtract other entities from elem', function () {
-            var decl1 = [{ block: 'block', elem: 'elem' }],
+            var decl1 = [{ scope: 'block', elem: 'elem' }],
                 decl2 = [
                     { block: 'block' },
-                    { block: 'block', modName: 'mod', modVal: true },
-                    { block: 'block', modName: 'mod', modVal: 'val' },
-                    { block: 'block', elem: 'elem', modName: 'mod', modVal: true },
-                    { block: 'block', elem: 'elem', modName: 'mod', modVal: 'val' }
+                    { scope: 'block', modName: 'mod', modVal: true },
+                    { scope: 'block', modName: 'mod', modVal: 'val' },
+                    { scope: 'block', elem: 'elem', modName: 'mod', modVal: true },
+                    { scope: 'block', elem: 'elem', modName: 'mod', modVal: 'val' }
                 ];
 
             subtract(decl1, decl2)
@@ -136,13 +136,13 @@ describe('subtract', function () {
         });
 
         it('must not subtract other entities from bool mod of elem', function () {
-            var decl1 = [{ block: 'block', elem: 'elem',  modName: 'mod', modVal: true }],
+            var decl1 = [{ scope: 'block', elem: 'elem',  modName: 'mod', modVal: true }],
                 decl2 = [
                     { block: 'block' },
-                    { block: 'block', modName: 'mod', modVal: true },
-                    { block: 'block', modName: 'mod', modVal: 'val' },
-                    { block: 'block', elem: 'elem' },
-                    { block: 'block', elem: 'elem', modName: 'mod', modVal: 'val' }
+                    { scope: 'block', modName: 'mod', modVal: true },
+                    { scope: 'block', modName: 'mod', modVal: 'val' },
+                    { scope: 'block', elem: 'elem' },
+                    { scope: 'block', elem: 'elem', modName: 'mod', modVal: 'val' }
                 ];
 
             subtract(decl1, decl2)
@@ -150,13 +150,13 @@ describe('subtract', function () {
         });
 
         it('must not subtract other entities from mod of elem', function () {
-            var decl1 = [{ block: 'block', elem: 'elem', modName: 'mod', modVal: 'val' }],
+            var decl1 = [{ scope: 'block', elem: 'elem', modName: 'mod', modVal: 'val' }],
                 decl2 = [
                     { block: 'block' },
-                    { block: 'block', modName: 'mod', modVal: true },
-                    { block: 'block', modName: 'mod', modVal: 'val' },
-                    { block: 'block', elem: 'elem' },
-                    { block: 'block', elem: 'elem', modName: 'mod', modVal: true }
+                    { scope: 'block', modName: 'mod', modVal: true },
+                    { scope: 'block', modName: 'mod', modVal: 'val' },
+                    { scope: 'block', elem: 'elem' },
+                    { scope: 'block', elem: 'elem', modName: 'mod', modVal: true }
                 ];
 
             subtract(decl1, decl2)
